@@ -1,12 +1,12 @@
 from src.classes import Category
 
 
-def test_product_init(product):
+def test_product_init(product_samsung):
     # Проверка успешной инициализации экземпляра класса Product
-    assert product.name == "Samsung Galaxy S23 Ultra"
-    assert product.description == "256GB, Серый цвет, 200MP камера"
-    assert product.price == 180000.0
-    assert product.quantity == 5
+    assert product_samsung.name == "Samsung Galaxy S23 Ultra"
+    assert product_samsung.description == "256GB, Серый цвет, 200MP камера"
+    assert product_samsung.price == 180000.0
+    assert product_samsung.quantity == 5
 
 
 def test_category_init(first_category, second_category):

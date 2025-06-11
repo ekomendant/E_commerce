@@ -40,7 +40,7 @@ def test_read_json_no_file(mock_open):
 """ Тестирование функции src.utils.read_json """
 
 
-def test_create_objects_from_json(category_from_json, second_category):
+def test_create_objects_from_json(category_from_json, second_category, product_tv):
     result = create_objects_from_json(category_from_json)
 
     # Проверка успешного создания класса Category
@@ -49,10 +49,10 @@ def test_create_objects_from_json(category_from_json, second_category):
     assert len(result[0].products) == len(second_category.products)
 
     # Проверка успешного создания класса Product
-    assert result[0].products[0].name == second_category.products[0].name
-    assert result[0].products[0].description == second_category.products[0].description
-    assert result[0].products[0].price == second_category.products[0].price
-    assert result[0].products[0].quantity == second_category.products[0].quantity
+    assert result[0].products[0].name == product_tv.name
+    assert result[0].products[0].description == product_tv.description
+    assert result[0].products[0].price == product_tv.price
+    assert result[0].products[0].quantity == product_tv.quantity
 
     # Проверка, если данные на входе не соответствуют нужному формату
     assert create_objects_from_json([]) == []
