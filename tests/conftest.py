@@ -30,29 +30,50 @@ def second_category(product_tv):
 @pytest.fixture
 def product_samsung():
     return Product(
-        name="Samsung Galaxy S23 Ultra", description="256GB, Серый цвет, 200MP камера", price=180000.0, quantity=5
+        name="Samsung Galaxy S23 Ultra", description="256GB, Серый цвет, 200MP камера", price=210000.0, quantity=5
+    )
+
+
+@pytest.fixture
+def product_samsung_dict():
+    return {
+        "name": "Samsung Galaxy S23 Ultra",
+        "description": "256GB, Серый цвет, 200MP камера",
+        "price": 210000.0,
+        "quantity": 5,
+    }
+
+
+@pytest.fixture
+def product_samsung_2():
+    return Product(
+        name="Samsung Galaxy S23 Ultra", description="256GB, Серый цвет, 200MP камера", price=180000.0, quantity=10
     )
 
 
 @pytest.fixture
 def product_iphone():
-    return Product(
-        name="Iphone 15", description="512GB, Gray space", price=210000.0, quantity=8
-    )
+    return Product(name="Iphone 15", description="512GB, Gray space", price=210000.0, quantity=8)
 
 
 @pytest.fixture
 def product_xiaomi():
-    return Product(
-        name="Xiaomi Redmi Note 11", description="1024GB, Синий", price=31000.0, quantity=14
-    )
+    return Product(name="Xiaomi Redmi Note 11", description="1024GB, Синий", price=31000.0, quantity=14)
+
+
+@pytest.fixture
+def product_xiaomi_dict():
+    return {
+        "name": "Xiaomi Redmi Note 11",
+        "description": "1024GB, Синий",
+        "price": 31000.0,
+        "quantity": 14,
+    }
 
 
 @pytest.fixture
 def product_tv():
-    return Product(
-        name='55" QLED 4K', description="Фоновая подсветка", price=123000.0, quantity=7
-    )
+    return Product(name='55" QLED 4K', description="Фоновая подсветка", price=123000.0, quantity=7)
 
 
 @pytest.fixture
