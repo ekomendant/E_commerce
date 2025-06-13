@@ -18,6 +18,11 @@ class Product:
         Product.all_products.append(self)
         Product.all_names.append(self.name)
 
+    def __str__(self) -> str:
+        """Метод возвращает описание экземпляра класса товаров в виде строки"""
+
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
     @classmethod
     def new_product(cls, product: dict) -> Any:
         """
@@ -59,40 +64,7 @@ class Product:
         else:
             print("Цена не должна быть нулевая или отрицательная")
 
+    def __add__(self, other: "Product") -> float:
+        """Метод рассчитывает общую стоимость (цена * количество) двух продуктов"""
 
-class Category:
-    """Класс для представления категорий товаров."""
-
-    category_count = 0
-    product_count = 0
-
-    def __init__(self, name: str, description: str, products: list[Product]) -> None:
-        """Метод для инициализации экземпляра класса категорий товаров."""
-
-        self.name = name
-        self.description = description
-        self.__products = products if products else []
-
-        Category.category_count += 1
-        Category.product_count += len(self.__products)
-
-    def add_product(self, product: list | Product) -> None:
-        """Метод для добавления новых продуктов в список products"""
-
-        if isinstance(product, list):
-            for prod in product:
-                if isinstance(prod, Product):
-                    self.__products.append(prod)
-                    Category.product_count += 1
-        elif isinstance(product, Product):
-            self.__products.append(product)
-            Category.product_count += 1
-
-    @property
-    def products(self) -> str:
-        """Метод-геттер для получения списка продуктов выбранной категории в виде строки"""
-
-        product_str = ""
-        for prod in self.__products:
-            product_str += f"{prod.name}, {prod.price} руб. Остаток: {prod.quantity} шт.\n"
-        return product_str
+        return self.__price * self.quantity + other.__price * other.quantity
