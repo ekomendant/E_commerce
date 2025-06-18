@@ -2,7 +2,8 @@ import json
 from json import JSONDecodeError
 from typing import Any
 
-from src.classes import Category, Product
+from src.category import Category
+from src.product import Product
 
 
 def read_json(file_json: str) -> Any:

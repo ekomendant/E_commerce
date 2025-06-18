@@ -1,6 +1,8 @@
 import pytest
 
-from src.classes import Category, Product
+from src.category import Category
+from src.product import Product
+from src.product_iterator import ProductIterator
 
 
 @pytest.fixture
@@ -62,12 +64,12 @@ def product_xiaomi():
 
 
 @pytest.fixture
-def product_xiaomi_dict():
+def product_realme_dict():
     return {
-        "name": "Xiaomi Redmi Note 11",
-        "description": "1024GB, Синий",
-        "price": 31000.0,
-        "quantity": 14,
+        "name": "REALME 14T 5G",
+        "description": "128GB, Зеленый",
+        "price": 20000.0,
+        "quantity": 20,
     }
 
 
@@ -87,3 +89,8 @@ def category_from_json():
             ],
         }
     ]
+
+
+@pytest.fixture
+def iterator(first_category):
+    return ProductIterator(first_category)
