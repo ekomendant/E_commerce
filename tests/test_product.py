@@ -1,5 +1,7 @@
 from unittest.mock import patch
 
+import pytest
+
 from src.product import Product
 
 
@@ -73,7 +75,26 @@ def test_product_new_price_minus(capsys, product_samsung):
 
 
 # Проверка сложения продуктов (вычисления общей стоимости)
-def test_product_add(product_samsung, product_iphone, product_xiaomi):
+def test_product_add(
+    product_samsung,
+    product_iphone,
+    product_xiaomi,
+    prod_smartphone_1,
+    prod_smartphone_2,
+    prod_lawngrass_1,
+    prod_lawngrass_2,
+):
+    # Сложение объектов класса Product
     assert product_samsung + product_iphone == 2730000.0
     assert product_samsung + product_xiaomi == 1484000.0
     assert product_xiaomi + product_iphone == 2114000.0
+
+    # Сложение объектов класса Smartphone
+    assert prod_smartphone_1 + prod_smartphone_2 == 2114000.0
+
+    # Сложение объектов класса LawnGrass
+    assert prod_lawngrass_1 + prod_lawngrass_2 == 16750.0
+
+    # Сложение продуктов разных классов
+    with pytest.raises(TypeError):
+        prod_smartphone_1 + prod_lawngrass_1

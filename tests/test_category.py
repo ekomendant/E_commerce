@@ -1,3 +1,5 @@
+import pytest
+
 from src.category import Category
 
 
@@ -44,3 +46,7 @@ def test_category_init(first_category, second_category, product_samsung_2, produ
         "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
         "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n"
     )
+
+    # Проверка добавления объекта отличного от класса Product
+    with pytest.raises(TypeError):
+        second_category.add_product("Смартфон")
