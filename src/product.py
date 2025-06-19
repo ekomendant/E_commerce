@@ -65,6 +65,8 @@ class Product:
             print("Цена не должна быть нулевая или отрицательная")
 
     def __add__(self, other: "Product") -> float:
-        """Метод рассчитывает общую стоимость (цена * количество) двух продуктов"""
+        """Метод рассчитывает общую стоимость (цена * количество) двух продуктов одного дочернего класса"""
 
-        return self.__price * self.quantity + other.__price * other.quantity
+        if type(self) is type(other):
+            return self.__price * self.quantity + other.__price * other.quantity
+        raise TypeError
