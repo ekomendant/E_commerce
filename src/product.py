@@ -1,7 +1,10 @@
 from typing import Any
 
+from src.base_classes import BaseProduct
+from src.mixin import Mixin
 
-class Product:
+
+class Product(BaseProduct, Mixin):
     """Класс для представления товаров."""
 
     all_products: list = []
@@ -14,6 +17,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
         Product.all_products.append(self)
         Product.all_names.append(self.name)

@@ -1,7 +1,10 @@
+from typing import Any
+
+from src.base_classes import BaseCategory
 from src.product import Product
 
 
-class Category:
+class Category(BaseCategory):
     """Класс для представления категорий товаров."""
 
     category_count = 0
@@ -53,3 +56,13 @@ class Category:
         """Метод-геттер для получения списка продуктов выбранной категории"""
 
         return self.__products
+
+    @property
+    def amount(self) -> Any:
+        """Метод для вычисления общей стоимости товаров в категории."""
+
+        total = 0.0
+        for prod in self.__products:
+            amount = prod.price * prod.quantity
+            total += amount
+        return total
