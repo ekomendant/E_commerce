@@ -50,3 +50,6 @@ def test_category_init(first_category, second_category, product_samsung_2, produ
     # Проверка добавления объекта отличного от класса Product
     with pytest.raises(TypeError):
         second_category.add_product("Смартфон")
+
+    # Проверка расчета общей стоимости товаров в категории
+    assert first_category.amount == 3164000.0
