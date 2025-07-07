@@ -3,7 +3,8 @@ import pytest
 from src.category import Category
 
 
-def test_category_init(first_category, second_category, product_samsung_2, product_iphone, product_xiaomi):
+# Проверка инициализации категории
+def test_category_init(first_category, second_category):
     # Проверка успешной инициализации экземпляра класса Category
     assert first_category.name == "Смартфоны"
     assert (
@@ -26,6 +27,9 @@ def test_category_init(first_category, second_category, product_samsung_2, produ
     assert second_category.product_count == 4
     assert Category.product_count == 4
 
+
+# Проверка добавления продуктов в категорию
+def test_category_add(first_category, second_category, product_samsung_2, product_iphone, product_xiaomi):
     # Проверка добавления одного продукта
     second_category.add_product(product_samsung_2)
     lines = second_category.products.split("\n")
@@ -53,3 +57,12 @@ def test_category_init(first_category, second_category, product_samsung_2, produ
 
     # Проверка расчета общей стоимости товаров в категории
     assert first_category.amount == 3164000.0
+
+
+# Проверка расчета средней стоимости товаров в категории
+def test_category_middle(first_category, empty_category):
+    # Если категория содержит товары
+    assert first_category.middle_price() == 150333.33
+
+    # Если категория не содержит товары
+    assert empty_category.middle_price() == 0

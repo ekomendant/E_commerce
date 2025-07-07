@@ -98,3 +98,9 @@ def test_product_add(
     # Сложение продуктов разных классов
     with pytest.raises(TypeError):
         prod_smartphone_1 + prod_lawngrass_1
+
+
+# Проверка добавления экземпляра класса Product с нулевым количеством
+def test_product_invalid_init():
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        Product(name="Бракованный товар", description="Неверное количество", price=1000.0, quantity=0)
