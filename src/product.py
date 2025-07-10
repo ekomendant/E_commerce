@@ -13,14 +13,17 @@ class Product(BaseProduct, Mixin):
     def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
         """Метод для инициализации экземпляра класса товаров."""
 
-        self.name = name
-        self.description = description
-        self.__price = price
-        self.quantity = quantity
-        super().__init__()
+        if quantity > 0:
+            self.name = name
+            self.description = description
+            self.__price = price
+            self.quantity = quantity
+            super().__init__()
 
-        Product.all_products.append(self)
-        Product.all_names.append(self.name)
+            Product.all_products.append(self)
+            Product.all_names.append(self.name)
+        else:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
 
     def __str__(self) -> str:
         """Метод возвращает описание экземпляра класса товаров в виде строки"""

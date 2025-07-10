@@ -1,6 +1,7 @@
 from typing import Any
 
 from src.base_classes import BaseCategory
+from src.exception_class import ZeroQuantity
 from src.product import Product
 
 
@@ -10,8 +11,17 @@ class Order(BaseCategory):
     def __init__(self, product: Product, quantity: int) -> None:
         """Метод для инициализации экземпляра класса заказов."""
 
-        self.product = product
-        self.quantity = quantity
+        try:
+            if quantity == 0:
+                raise ZeroQuantity(f"Нельзя добавить товар {product.name} с нулевым количеством")
+        except ZeroQuantity as e:
+            print(str(e))
+        else:
+            self.product = product
+            self.quantity = quantity
+            print(f"Товар {product.name} успешно добавлен")
+        finally:
+            print("Добавление товара завершено")
 
     @property
     def amount(self) -> Any:

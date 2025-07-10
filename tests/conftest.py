@@ -32,6 +32,15 @@ def second_category(product_tv):
 
 
 @pytest.fixture
+def empty_category():
+    return Category(
+        name="Компьютеры",
+        description="Персональные компьютеры",
+        products=[],
+    )
+
+
+@pytest.fixture
 def product_samsung():
     return Product(
         name="Samsung Galaxy S23 Ultra", description="256GB, Серый цвет, 200MP камера", price=210000.0, quantity=5
@@ -78,6 +87,11 @@ def product_realme_dict():
 @pytest.fixture
 def product_tv():
     return Product(name='55" QLED 4K', description="Фоновая подсветка", price=123000.0, quantity=7)
+
+
+@pytest.fixture
+def product_invalid():
+    return Product(name="Бракованный товар", description="Неверное количество", price=1000.0, quantity=0)
 
 
 @pytest.fixture
